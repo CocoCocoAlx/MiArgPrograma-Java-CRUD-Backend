@@ -16,13 +16,16 @@ public class ProductoDto {
     private String nombre;
     @Min(0)
     private float precio;
+    @NotBlank
+    private String descripcion;
 
     public ProductoDto() {
     }
 
-    public ProductoDto(String nombre, float precio) {
+    public ProductoDto(String nombre, float precio, String descripcion) {
         this.nombre = nombre;
         this.precio = precio;
+        this.descripcion = descripcion;
     }
 
     public String getNombre() {
@@ -40,5 +43,13 @@ public class ProductoDto {
     public void setPrecio(float precio) {
         this.precio = precio;
     }
-    
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
 }

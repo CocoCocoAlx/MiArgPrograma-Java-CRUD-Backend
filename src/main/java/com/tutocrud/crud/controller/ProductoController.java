@@ -68,7 +68,7 @@ public class ProductoController {
                 return new ResponseEntity(new Mensaje("El precio debe ser igual o mayor a cero"),HttpStatus.BAD_REQUEST);
             if (productoService.existsByNombre(productoDto.getNombre()))
                 return new ResponseEntity(new Mensaje("El nombre del producto ya existe"),HttpStatus.BAD_REQUEST);
-            Producto producto = new Producto(productoDto.getNombre(),productoDto.getPrecio());
+            Producto producto = new Producto(productoDto.getNombre(),productoDto.getPrecio(),productoDto.getDescripcion());
             productoService.save(producto);
             return new ResponseEntity(new Mensaje("Producto creado"),HttpStatus.OK);
         }
@@ -85,6 +85,7 @@ public class ProductoController {
             Producto producto = productoService.getOne(id).get();
             producto.setNombre(productoDto.getNombre());
             producto.setPrecio(productoDto.getPrecio());
+            producto.setDescripcion(productoDto.getDescripcion());
             productoService.save(producto);
             return new ResponseEntity(new Mensaje("Producto actualizado"),HttpStatus.OK);
         }
